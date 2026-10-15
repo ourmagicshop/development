@@ -139,3 +139,7 @@ body {
     gap: 14px 20px;
   }
 }
+@theme {
+  --color-purple: #352765;
+  --color-lightpurple: #9B8DCB;
+}
