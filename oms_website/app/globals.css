@@ -3,6 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --header-background: #ffffff;
+  --header-border: #e5e7eb;
+  --link-color: #374151;
+  --link-hover: #111827;
 }
 
 @theme inline {
@@ -16,11 +20,122 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --header-background: #171717;
+    --header-border: #333333;
+    --link-color: #d1d5db;
+    --link-hover: #ffffff;
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header navigation */
+.site-header {
+  font-family: var(--font-poppins), sans-serif;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  padding: 16px 90px;
+  background: var(--header-background);
+  border-bottom: 1px solid var(--header-border);
+}
+
+.site-logo {
+  justify-self: start;
+  color: var(--foreground);
+  font-size: 1.15rem;
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Navigation links */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.site-nav a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-size: 1.15rem;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--link-hover);
+}
+
+/* Discord call-to-action button */
+.discord-link {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 18px;
+  background: #5941A9;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.discord-link:hover {
+  background: #4752c4;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.discord-link svg {
+  display: block;
+  width: 25px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Make the header fit smaller screens */
+@media (max-width: 700px) {
+  .site-header {
+    grid-template-columns: 1fr auto;
+    row-gap: 18px;
+    padding: 14px 18px;
+  }
+
+  .site-logo {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .discord-link {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .site-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px 20px;
+  }
 }
