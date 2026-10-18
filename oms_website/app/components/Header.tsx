@@ -3,8 +3,8 @@ import Link from "next/link";
 const navigation = [
   { name: "About Us", href: "/about" },
   { name: "Behind the Scenes", href: "/behind-the-scenes" },
-  { name: "Events", href: "/guide" },
-  { name: "Army Guide", href: "/" }
+  { name: "Events", href: "/events" },
+  { name: "Army Guide", href: "/army-guide" }
 ];
 
 export default function Header() {
@@ -23,7 +23,7 @@ export default function Header() {
       </nav>
 
       <a
-        href="YOUR_DISCORD_INVITE_URL"
+        href="https://discord.gg/ourmagicshop"
         className="discord-link"
         target="_blank"
         rel="noopener noreferrer"
