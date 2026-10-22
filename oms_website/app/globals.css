@@ -20,7 +20,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --header-background: #171717;
+    --header-background: #000000;
     --header-border: #333333;
     --link-color: #d1d5db;
     --link-hover: #ffffff;
@@ -41,22 +41,34 @@ body {
 /* Header navigation */
 .site-header {
   font-family: var(--font-poppins), sans-serif;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 16px 90px;
+  min-height: 84px;
   background: var(--header-background);
   border-bottom: 1px solid var(--header-border);
 }
 
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  max-width: 1152px;
+  min-height: 84px;
+  margin-inline: auto;
+}
+
+
 .site-logo {
-  justify-self: start;
   color: var(--foreground);
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 400;
   text-decoration: none;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Navigation links */
@@ -70,7 +82,7 @@ body {
 .site-nav a {
   color: var(--link-color);
   text-decoration: none;
-  font-size: 1.15rem;
+  font-size: 1rem;
   white-space: nowrap;
   transition: color 0.2s ease;
 }
@@ -81,23 +93,23 @@ body {
 
 /* Discord call-to-action button */
 .discord-link {
-  justify-self: end;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 11px 18px;
+  gap: 8px;
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 10px 16px;
+  box-sizing: border-box;
   background: #5941A9;
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 400;
   text-decoration: none;
   white-space: nowrap;
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .discord-link:hover {
@@ -108,9 +120,111 @@ body {
 
 .discord-link svg {
   display: block;
-  width: 25px;
-  height: 20px;
+  width: 20px;
+  height: 17px;
   flex-shrink: 0;
+}
+
+
+/* Home page hero */
+.hero {
+  min-height: clamp(260px, calc(50svh - 72px), 520px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  text-align: center;
+  font-family: var(--font-poppins), sans-serif;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+
+.hero-section {
+  font-family: var(--font-poppins), sans-serif;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  width: 100%;
+  min-height: 100svh;
+  padding: 64px clamp(24px, 6vw, 96px);
+
+  background-image: url("/hero.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 650px;
+}
+
+.hero-eyebrow {
+  margin: 0 0 20px;
+  color: #F5C451;
+  font-size: 16px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  color: #ffffff;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+.hero-heading span {
+  white-space: nowrap;
+}
+
+.hero-tagline {
+  margin: 20px 0 28px;
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.hero-right {
+  min-width: 0;
+}
+
+@media (max-width: 700px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 64px 24px;
+  }
+
+  .hero-heading {
+    font-size: clamp(36px, 9vw, 48px);
+  }
+
+  .hero-tagline {
+    font-size: clamp(30px, 7vw, 40px);
+  }
+}
+
+
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 40px 20px;
+  }
 }
 
 /* Make the header fit smaller screens */
@@ -131,10 +245,14 @@ body {
     grid-row: 1;
   }
 
+  .site-header-inner {
+    flex-wrap: wrap;
+    row-gap: 18px;
+  }
+
   .site-nav {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-content: center;
+    order: 3;
+    width: 100%;
     flex-wrap: wrap;
     gap: 14px 20px;
   }
