@@ -7,7 +7,7 @@ export default async function DiscordAPI_call() {
 
   try {
     const apiResult = await axios.get(
-      `https://discord.com/api/v9/invites/${server}?with_counts=true&with_expiration=true`
+      `https://discord.gg/ourmagicshop`
     );
     return apiResult.data;
   } catch (err) {

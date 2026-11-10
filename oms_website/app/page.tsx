@@ -2,6 +2,8 @@
 import React from "react";
 import Card from "./coponents/CIN_Card.js";
 import Hero from "./components/Hero";
+import EssenceOfOMS from "./components/EssenceOfOMS";
+import WhatIsOMS from "./components/WhatIsOMS";
 
 export default function Home() {
   return (
@@ -47,6 +49,9 @@ export default function Home() {
           />
         </div>
       </section>
+
+      <EssenceOfOMS />
+      <WhatIsOMS />
 
       {/* Future homepage sections go here */}
     </div>
